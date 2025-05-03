@@ -258,7 +258,8 @@
   fetch("/send_message", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ model_name: model, query: query }),
+    body: JSON.stringify({query: query }),
+    
   })
     .then((res) => res.json())
     .then((data) => {

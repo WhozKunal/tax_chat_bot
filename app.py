@@ -15,7 +15,7 @@ def index():
 
 @app.route("/send_message", methods=["POST"])
 def chat():
-    user_input = request.json.get("message", "")
+    user_input = request.json.get("query", "")
     try:
         response = run_agent(user_input)
     except Exception as e:
@@ -28,4 +28,4 @@ def chat():
 
 
 if __name__ == "__main__":
-    app.run(debug=True,port=8001)
+    app.run(debug=False,port=8001)
