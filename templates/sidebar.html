@@ -1,0 +1,128 @@
+<ul class="navbar-nav side-patt sidebar sidebar-dark accordion wrapper-style" id="accordionSidebar" style="padding-top: 30px;">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+
+
+            <img style = "text-align: center; width :70px;margin-top:20px; margin-bottom:20px"  src="{{ url_for('static', filename='img/logo-circle.png') }}">
+
+
+        </div>
+    </a>
+
+    <!-- Nav Items -->
+    <li class="nav-item" style="margin-top: 30px;">
+        <a class="nav-link" href="{{url_for('home')}}">
+            <i class="fas fa-fw fa-home"  ></i>
+            <span>Home</span></a>
+    </li>
+    <li class="nav-item" id="myButton"   >
+        <a class="nav-link" href="{{url_for('doc_chat_route.doc_chat')}}">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Doc Chat</span></a>
+    </li>
+    <li class="nav-item">
+
+        <a class="nav-link" href="{{ url_for('llmchat_route.llmchat') }}">
+            <i class="fas fa-fw fa-comment"></i>
+            <span>LLM Chat</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('ai_office_agent_route.ai_office_agent') }}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>AI Office Agent</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('ai_ppt_route.ai_ppt')}}">
+            <i class="fas fa-fw fa-comment"></i>
+            <span>AI PPT</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('code_chat_route.code_chat')}}">
+            <i class="fas fa-fw fa-code"></i>
+            <span>Code Chat</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('summarizer_router.summarizer')}}">
+            <i class="fas fa-fw fa-file"></i>
+            <span>Summarizer Chat</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('translator_route.translator')}}">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Translator</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('text_to_speech_route.text_to_speech')}}">
+            <i class="fas fa-fw fa-microphone"></i>
+            <span>Text To Speech</span></a>
+    </li>
+
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{url_for('deepfake_detector.start_detection_main')}}">
+            <i class="fas fa-eye fa-check"></i>
+            <span>Avekshan</span></a>
+    </li>
+
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <hr class="sidebar-divider">
+        <ul class="nav flex-column">
+
+         
+
+            {% if session.get('user_role') == 'admin' %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('user_management_route.user_manegement')}}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>User Management</span>
+                </a>
+            </li>
+            {% endif %}
+
+
+
+     
+
+
+
+
+            
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="{{ url_for('logout') }}">
+                    <i class="fas fa-fw fa-sign text-danger"></i>
+                    <span>Logout</span></a>
+            </li>
+
+
+
+            
+        </ul>
+        <p class="vers-text">Version 1.0.0</p>
+    </div>
+</ul>
+
+
+<script>
+    const currentPath = window.location.pathname;
+
+    document.querySelectorAll(".nav-item").forEach((navItem) => {
+        const link = navItem.querySelector("a");
+
+        if (link) {
+            const href = link.getAttribute("href");
+            const url = new URL(href, window.location.origin);
+
+            if (currentPath === url.pathname) {
+                navItem.classList.add("active-link");
+                link.classList.add("nav_active");
+            } else {
+                navItem.classList.remove("active-link");
+                link.classList.remove("nav_active");
+            }
+        }
+    });
+</script>

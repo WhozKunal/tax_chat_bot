@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Doc Chat</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        {% include 'sidebar.html' %}
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column flag-texture">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <div class="navbar-nav ml-auto">
+                        <div class="card shadow h-100 py-2 card-body">2025-03-06 14:59:45.946</div>
+                    </div>
+
+                </nav>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <div class="inner-container2">
+                        <div class="row card-style my-5">
+                            <div class="col-xl-12 main-card">
+                                <div class="card">
+                                    <div class="card-header header-table">
+                                        <table width="100%" cellspacing="0" border="0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="wide-col1">Completed</th>
+                                                    <th class="wide-col2">Loading</th>
+                                                    <th class="wide-col3 text-center">PDF</th>
+                                                    <th class="wide-col4 text-center">&nbsp;</th>
+                                                    <!-- Form for file upload -->
+                                                    <th class="wide-col5">
+
+
+                                                        {% if user_can_upload %}
+
+                                                        <form id="uploadForm" action="{{ url_for('doc_chat_route.upload_pdf') }}" method="POST" enctype="multipart/form-data">
+                                                            <!-- File input for uploading PDF -->
+                                                            <input type="file" class="form-control" name="pdf_file" required>
+                                                    </th>
+
+                                                    <th class="wide-col6">
+                                                        <!-- File Type Selection -->
+                                                        <select name="fileType" class="form-control" required>
+                                                            <option value="">Select File Type</option>
+                                                            <option value="OPS & INT">OPS & INT</option>
+                                                            <option value="RULES & REGS">RULES & REGS</option>
+                                                            <option value="POLICIES">POLICIES</option>
+                                                            <option value="MISC">MISC</option>
+                                                        </select>
+                                                    </th>
+
+                                                    <th class="wide-col7 text-right">
+                                                        <!-- Submit button for uploading the file -->
+                                                        <button class="btn btn-info" type="submit" form="uploadForm">Upload</button>
+                                                    </th>
+                                                    {% else %}
+                                                    <th class="wide-col5 text-center text-muted" colspan="3">
+                                                    </th>
+                                                    {% endif %}
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                    <div class="card-body table-custom">
+                                        <table class="white-bg-table" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-set1">&nbsp;</th>
+                                                    <th>PDF Name</th>
+                                                    <th class="col-set2 text-center">Upload Time</th>
+                                                    <th class="text-center">File Type</th>
+                                                    <th class="text-center">Status</th>
+                                                    <th class="text-center">Download</th>
+                                                    <th class="text-center">Delete PDF</th>
+                                                    <th class="text-center">Update Type</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for item in metadata %}
+                                                <tr>
+                                                    <td class="wide-col1">&nbsp;</td>
+                                                    <td><a type="button" class="text-primary new_model" data-toggle="modal" data-target="#exampleModal" data-fname="{{ item.pdf_name }}">{{ item.pdf_name }}</a></td>
+                                                    <td class="text-center">{{ item.upload_time }}</td>
+                                                    <td class="text-center">{{ item.file_type }}</td>
+                                                    <td class="text-center">{{ item.status }}</td>
+                                                    <td class="text-center"><a href="{{ item.download_url }}" download>Download</a></td>
+                                                    <td class="text-center"><img src="static/img/delete-pic.png" alt="Delete"></td>
+                                                    <td class="text-center">Update</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade model-style" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+
+
+
+        <div class="modal-content">
+
+          
+            
+
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel_new" >test</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body" style="height:600px;overflow-y:scroll;">
+            
+            <p><strong>Result</strong></p>
+            <span id="result"></span>
+            <div id="chat_loader" style="display:none; text-align:center; margin:20px;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+
+            <p style="margin-top:50px;"><strong>Reference</strong></p>
+            <span id="ref"></span>
+
+                                        
+            </div>
+            <div class="modal-footer">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+                </div>
+                <input type="text" class="form-control" id="chat_content" placeholder="">
+                <div class="input-group-append">
+                <button class="btn btn-success" type="button" id="send_doc_chat">Send</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+<!-- Load jQuery first -->
+<script src="static/vendor/jquery/jquery.min.js"></script>
+
+<!-- Now write your jQuery code -->
+
+
+
+<script>
+    $('.new_model').click(function () {
+        $('#result, #ref').html('');
+        let fname = $(this).data('fname');
+        $('#chat_content').attr('placeholder', fname);
+        $('#exampleModalLabel_new').text(fname);
+
+        var settings = {
+            "url": "http://127.0.0.1:5000/getpdfname",
+            "method": "PUT",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "data": JSON.stringify({
+                "message": fname
+            }),
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+    });
+
+    $('#send_doc_chat').click(function () {
+        let chat_content = $("#chat_content").val();
+    
+        if (!chat_content.trim()) {
+            alert("Please enter some text.");
+            return;
+        }
+    
+        // Show loader and clear previous results
+        $('#chat_loader').show();
+        $('#result, #ref').html('');
+    
+        var settings = {
+            "url": '/doc_chat_question',
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "data": JSON.stringify({
+                "question": chat_content
+            }),
+        };
+    
+        $.ajax(settings).done(function (response) {
+            $('#chat_loader').hide();  // Hide loader
+    
+            console.log("Full Response:", response);
+            if (response.val) {
+                $('#result').html(response.result);
+                $('#ref').html(response.ref);
+            } else {
+                alert("Error: " + response.error);
+            }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            $('#chat_loader').hide();  // Hide loader on error
+            alert("Request failed: " + textStatus + ", " + errorThrown);
+        });
+    });
+    
+</script>
+
+
+<!-- Bootstrap core JavaScript-->
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="static/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>

@@ -1,3 +1,91 @@
+.loading::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+  }
+
+#userTable_wrapper{
+    margin-right:30px;
+}
+
+
+
+.bot-response{
+    background-color: #e8f6e9;
+    border-radius: 15px;
+    box-shadow: 0 .125rem 1.25rem 0 rgba(58, 59, 69, .2) !important;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #000000ce;
+    font-weight: 500;
+}
+
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.model-style .modal-header {
+    background-color: #000;
+    color: #ffffff;
+    text-align: center;
+}
+
+.model-style .close {
+    color: #ffffff;
+    opacity: 1.5;
+}
+@media (min-width: 576px) {
+    .model-style .modal-dialog {
+        max-width: 1080px;
+    }
+}
+
+.chat-text {
+    background-color: #e8f6e9;
+    border-radius: 15px;
+    box-shadow: 0 .125rem 1.25rem 0 rgba(58, 59, 69, .2) !important;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #000000ce;
+    font-weight: 500;
+
+
+  }
+
+
+.btn-outline-successs {
+    color: #313533;
+    border-color: #000;
+    padding: 5px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #c4cfc5;
+    border: 2px solid #e8f6e9;
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.chat-bold {
+    font-weight: 700;
+    
+}  
+
+.chat-scroll {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+}
+
+.chat-scroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+}
+
+
+
 .sidebar .nav-item .nav-link {
     padding: 8px !important;
   }
@@ -14,9 +102,12 @@
 .wrapper-style .nav-link {
     color: rgba(255, 255, 255, 1.0) !important;
 }
-.green-bg
-{
-	background-color:#e8f6e9;
+.block-asi {
+    background-color: #e8f6e9;
+    border-radius: 15px;
+    box-shadow: 0 .125rem 1.25rem 0 rgba(58, 59, 69, .2) !important;
+    padding: 25px 25px 9px 20px;
+	height: 224px;
 }
 
 .card-style .card {
@@ -31,7 +122,7 @@ font-size:18px;
 .card-style p
 {
 color:#3d5a30;
-font-size:16px;
+font-size:14px;
 }
 .card-style i {
     color: #41ae39;
@@ -50,8 +141,15 @@ font-size:16px;
 .white-bg-table {
 	background-color:#ffffff;
 }
-.main-card .card-header {
+.main-card {
     background-color: #e8f6e9 !important;
+}
+.card-header{
+    background-color: #e8f6e9dc !important;
+    border-bottom: 0px solid #e3e6f0 !important;
+    color: #000000 !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
 }
 
 .header-table .table thead th{
@@ -111,7 +209,7 @@ a.create-btn:hover {
     background: url(../img/milltry-man.jpg);
     border-radius: 20px 0px 0px 20px;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: round;
     height: 606px;
 }
 
@@ -156,14 +254,17 @@ a.create-btn:hover {
 .container-chat {
     position: relative;
 }
+
+
 .chat-section {
-    width: 65%;
     position: absolute;
     margin: auto;
     left: 0;
     right: 0;
 	bottom:100px;
 }
+
+
 .chat-section2 {
     width: 35%;
     position: absolute;
@@ -222,31 +323,79 @@ a.create-btn:hover {
 .login-container {
     margin: auto;
     background-color: #fff;
-    border: 5px #638054 solid;
+    border: 4px #ffffff solid;
     border-radius: 25px;
 	display:flex;
 }
 
 .inner-container2 {
-    width: 85%;
     margin: auto;
 }
+.flag-texture {
+    background: url(../img/flag-texture.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.mil-col-lft
+{
+	width:15%;
+}
+.mil-col-rght
+{
+	width:85%;
+	display:flex;
+}
+
+
+/* side bar */
+.nav-item:hover {
+    background-color: #cfe6d97a;
+    font-weight: 600;
+    border-radius: 15px;
+    padding: 1px !important;
+}
+
+.nav-item:active {
+    background-color: #cfe6d97a;
+}
+
+.active-link {
+    background-color: #cfe6d97a;
+    border-radius: 15px;
+}
+
+.nav_active {
+    color: white !important;
+    font-weight: 600;
+}
+
+
 
 
 
 @media only screen and (max-width: 1399px) {
 .login-container {max-width:800px;margin-top: 8%;}
-.inner-container {width: 90%;margin: auto;}
+.login-container2 {max-width:800px;}
+.inner-container {width: 700px;margin: auto;}
+.inner-container2 {width:90%;}
 .login-right {height: 504px;}
     .signup-container {
         width: 45%;
         margin-top: 8%;
     }
+.chat-section {
+    width: 70%;
+}
+.mil-col-lft {
+    width: 25%;
+}
 }
 @media only screen and (max-width: 1024px) {
+.inner-container {width: 75%;margin: auto;}
+.login-container2 {width:75%;}
 .login-container {
 margin-top: 13%;
-max-width: 715px;
+max-width: 90%;
 }
 .login-right {height: 496px;}
 .log-section {margin-top: 70px;}
@@ -262,7 +411,13 @@ max-width: 715px;
 		border: 2px #638054 solid;
 		border-radius: 10px;
     }
-
+.block-asi {
+    height: 260px;
+}
+.mil-col-lft
+{
+	width:30%;
+}
 }
 @media only screen and (max-width: 767px) {
     .login-container {
@@ -271,8 +426,11 @@ max-width: 715px;
 		width: 85%;
 		border: 2px #638054 solid;
 		border-radius: 10px;
-		margin-top: 25%;
+		margin-top: 15%;
     }
+	.block-asi {
+    height: auto;
+}
 	.login-left {
     width: 100%;
 	padding: 15px;
@@ -283,11 +441,13 @@ max-width: 715px;
 	.create-btn {
     padding: 9px 12px;
 }
-	.login-right {
-        height: 196px;
+.login-right {
+        height: 350px;
         width: 100%;
-		border-radius: 10px 10px 0px 0px;
-    }
+        border-radius: 10px 10px 0px 0px;
+        background-repeat: no-repeat;
+        background-position: center;
+}
 	.log-section {
         margin-top: 30px;
     }
@@ -298,15 +458,37 @@ max-width: 715px;
         width: 95%;
         margin-top: 15%;
     }
+	.chat-section {
+    width: 90%;
+}
+}
+
+@media only screen and (max-width: 475px) {
+.login-right {
+        height: 206px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+	.log-head {
+        font-size: 18px;
+    }
 }
 
 @media only screen and (min-width: 1400px) {
+.inner-container {width:1000px; margin: auto;}
+.inner-container2 {width:90%;}
  .login-container {
-        max-width: 920px;
+        max-width: 1250px;
         margin-top: 8%;
     }
 .signup-container {
     width: 420px;
     margin-top: 8%;
 }
+.chat-section {
+    width: 70%;
 }
+}
+
+
+

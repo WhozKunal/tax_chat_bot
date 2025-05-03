@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avekshan</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles2.css') }}"
+    />
+    <link
+      href="static/vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet"
+    />
+    <link href="static/css/sb-admin-2.min.css" rel="stylesheet" />
+    <link href="static/css/style.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="wrapper">
+      {% include 'sidebar.html' %}
+      <div
+        id="content-wrapper"
+        class="d-flex flex-column container-chat flag-texture"
+      >
+        <video autoplay muted loop id="background-video">
+          <source
+            src="{{ url_for('static', filename='css/bg.mp4') }}"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <nav class="navbar">
+          <a href="#" class="nav-link left">
+            <img
+              src="{{ url_for('static', filename='css/jimmy.png') }}"
+              alt="Left Logo"
+              class="nav-img"
+            />
+          </a>
+          <h1>Military College of Telecommunication Engineering</h1>
+          <a href="#" class="nav-link right">
+            <img
+              src="{{ url_for('static', filename='css/mcte.png') }}"
+              alt="Right Logo"
+              class="nav-img"
+            />
+          </a>
+        </nav>
+
+        <div class="container">
+          <main>
+            <section class="upload-section">
+              <div class="drop-zone" id="dropZone">
+                <p>Drag & Drop your video here</p>
+                <label for="fileInput" class="upload-btn">Browse</label>
+                <input
+                  type="file"
+                  id="fileInput"
+                  accept="video/mp4,video/avi"
+                  hidden
+                />
+              </div>
+            </section>
+          </main>
+        </div>
+
+
+
+        <div class="video-container">
+          <div id="inputPopup" class="video-popup left" style="margin-top:30px;">
+            <div class="video-content">
+              <span class="close-video" onclick="closeInputPopup()">×</span>
+              <video id="inputVideo" controls autoplay></video>
+              <button id="processButton" class="process-btn">Process</button>
+            </div>
+          </div>
+
+
+
+
+          <div id="detectedPopup" class="video-popup right" style="margin-top:30px;">
+            <div class="video-content">
+              <h2 id="downloadHeading" style="display: none">
+                Detection Video Download
+              </h2>
+              <a
+                id="downloadLink"
+                class="download-btn"
+                style="display: none"
+                download
+                >Download Processed Video</a
+              >
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='css/script.js') }}"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="static/js/sb-admin-2.min.js"></script>
+  </body>
+</html>

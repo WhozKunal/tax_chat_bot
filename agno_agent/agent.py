@@ -49,17 +49,15 @@ if agent.knowledge is not None:
     
     
 def run_agent(query: str) -> str:
-    try:
-        response = agent.run(query)  # Assuming 'run' method is correct
-        
-        # If response is of type 'Message' or contains 'Message', we extract the content
-        if hasattr(response, 'text'):  # or check for the specific attribute
-            return response.text
-        else:
-            # Return the response as a string if no 'text' attribute is found
-            return str(response)
+    response = agent.run(query)
     
-    except Exception as e:
-        return f"Error processing your query: {str(e)}"
+    # This handles cases where the response is wrapped in a RunResponse object
+    if hasattr(response, "content"):
+        return response.content
+    elif hasattr(response, "text"):
+        return response.text
+    else:
+        return str(response)
+
 
 

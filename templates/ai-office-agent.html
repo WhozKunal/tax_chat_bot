@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AI Office Agent</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+	<link href="static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        {% include 'sidebar.html' %}
+
+
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column container-chat flag-texture">
+
+            <!-- Main Content -->
+            <div id="content">
+
+              <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top">
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Navbar -->
+                    <div class="navbar-nav ml-auto">
+						<div class="card shadow h-100 py-2 card-body">2025-03-06 14:59:45.946</div>
+                   </div>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+						<div class="chat-section">
+              
+                                <div style="height:600px; overflow-y:scroll; padding-right:100px; padding-left:100px; overflow-x:hidden;" class="chat-scroll">
+
+                        
+                            </div>
+                            
+                            <form method="POST" action="{{ url_for('ai_office_agent_route.ai_office_agent') }}" class="miltry-form">
+                                <div class="mil-col-lft">
+                                    <select class="form-control" name="model_name" id="model_name" required>
+                                        <option value="">Select Type</option>
+                                        <option value="SOC">SOC</option>
+                                        <option value="Letter">Letter</option>
+                                        <option value="ION">ION</option>
+                                    </select>
+                                </div>
+                            
+                                <div class="mil-col-rght">
+                                    <input type="text" name="query" id="query" class="form-control" placeholder="Type a Message..." required>
+                                    <button type="submit" class="send-icon">
+                                        <img src="static/img/send-ico.png" alt="Send">
+                                    </button>
+                                </div>
+                            </form>
+                            
+                            
+
+
+
+
+
+					</div>
+            <!-- End of Main Content -->
+
+ 
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- Bootstrap core JavaScript-->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="static/js/sb-admin-2.min.js"></script>
+
+
+    <script>
+        function sendMessage(event) {
+            event.preventDefault();
+    
+            const query = document.getElementById("query").value;
+            const model = document.getElementById("model_name").value;
+            if (!query.trim()) return;
+    
+            // Append user message immediately with bold text
+            const chatContainer = document.querySelector(".chat-section .row");
+            const userMsg = `
+                <div class="col-md-12 text-right" style="margin-bottom:10px;"> <strong>You:</strong> <strong>${query}</strong> </div>
+            `;
+            chatContainer.innerHTML += userMsg;
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+    
+            document.getElementById("query").value = '';
+    
+            // Append a loading spinner or placeholder
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = "col-md-12 text-left bot-reply";
+            loadingDiv.innerHTML = `<strong>${model}:</strong> <span class="loading"><strong>Typing...</strong></span>`;
+            chatContainer.appendChild(loadingDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+    
+            // Send request
+            fetch("/send_message", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ model_name: model, query: query })
+            })
+            .then(res => res.json())
+            .then(data => {
+                loadingDiv.innerHTML = `<strong>${model}:</strong> <strong>${data.response}</strong>`;
+            })
+            .catch(err => {
+                loadingDiv.innerHTML = `<strong>${model}:</strong> <span style="color:red;"><strong>Error getting response.</strong></span>`;
+                console.error(err);
+            });
+        }
+    </script>
+    
+</body>
+
+</html>

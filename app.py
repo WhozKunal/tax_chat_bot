@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, jsonify
 from agno_agent.agent import run_agent
 
+
+
 app = Flask(__name__)
 
 
@@ -11,14 +13,11 @@ def index():
 
 
 
-
-
-@app.route("/chat", methods=["POST"])
+@app.route("/send_message", methods=["POST"])
 def chat():
     user_input = request.json.get("message", "")
     try:
         response = run_agent(user_input)
-        print(response)
     except Exception as e:
         response = f"Error processing your query: {str(e)}"
     return jsonify({"response": response})
@@ -29,4 +28,4 @@ def chat():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=8001)
