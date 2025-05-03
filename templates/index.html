@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>LLM Chat</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+	<link href="static/css/style.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav side-patt sidebar sidebar-dark accordion wrapper-style" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                   <img src="static/img/red-logo.jpg">
+                </div>
+            </a>
+
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Home</span></a>
+            </li>
+            <!-- Nav Item - Tables -->
+           
+<div class="bottom-nav">
+<hr class="sidebar-divider">
+<ul class="nav flex-column">
+  
+</ul>
+</div>
+        </ul>
+
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column container-chat">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <!-- Topbar Navbar -->
+                    <div class="navbar-nav ml-auto">
+						<div class="card shadow h-100 py-2 card-body">2025-03-06 14:59:45.946</div>
+                   </div>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="chat-section">
+                    <form id="chat-form" class="miltry-form" method="POST">
+                        <div class="input-group">
+                            <input type="text" id="chat-input" class="form-control" placeholder="Type a Message..." required>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary send-icon">
+                                    <img src="static/img/send-ico.png" alt="Send" style="height: 20px;">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+            <!-- End of Main Content -->
+            <div id="chat-messages" style="margin-top: 20px;">
+                <!-- Messages will be appended here -->
+            </div>
+ 
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="static/vendor/jquery/jquery.min.js"></script>
+    <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="static/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="static/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="static/js/demo/chart-area-demo.js"></script>
+    <script src="static/js/demo/chart-pie-demo.js"></script>
+
+    <script>
+        document.getElementById("chat-form").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const inputField = document.getElementById("chat-input");
+            const message = inputField.value.trim();
+            if (!message) return;
+        
+            // Display user's message
+            const chatBox = document.getElementById("chat-messages");
+            const userMsg = document.createElement("div");
+            userMsg.classList.add("text-right", "mb-2");
+            userMsg.innerHTML = `<strong>You:</strong> ${message}`;
+            chatBox.appendChild(userMsg);
+        
+            // Send message to backend
+            const res = await fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: message })
+            });
+        
+            const data = await res.json();
+        
+            // Display bot response
+            const botMsg = document.createElement("div");
+            botMsg.classList.add("text-left", "mb-2");
+            botMsg.innerHTML = `<strong>Bot:</strong> ${data.response}`;
+            chatBox.appendChild(botMsg);
+        
+            // Clear input
+            inputField.value = "";
+        });
+        </script>
+        
+    
+</body>
+
+</html>

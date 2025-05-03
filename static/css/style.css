@@ -1,0 +1,312 @@
+.sidebar .nav-item .nav-link {
+    padding: 8px !important;
+  }
+.bottom-nav {
+    margin-top: 30px;
+}
+.side-patt
+{
+	background:url("../img/patt.jpg")
+}
+.side-patt .sidebar ul li a {
+        font-size:18px !important;
+    }
+.wrapper-style .nav-link {
+    color: rgba(255, 255, 255, 1.0) !important;
+}
+.green-bg
+{
+	background-color:#e8f6e9;
+}
+
+.card-style .card {
+    border: none;
+}
+.card-style h2
+{
+color:#79956c;
+font-weight:bold;
+font-size:18px;
+}
+.card-style p
+{
+color:#3d5a30;
+font-size:16px;
+}
+.card-style i {
+    color: #41ae39;
+    font-size: 28px;
+}
+.dark-green {
+    color: #214906;
+    font-weight: bold;
+    font-size: 26px;
+}
+.light-green {
+    color: #e8f6e9;
+    font-weight: bold;
+    font-size: 16px;
+}
+.white-bg-table {
+	background-color:#ffffff;
+}
+.main-card .card-header {
+    background-color: #e8f6e9 !important;
+}
+
+.header-table .table thead th{
+border-bottom: 0px solid #e3e6f0;
+}
+.header-table .table th{
+border-bottom: 0px solid #e3e6f0;
+}
+
+.login-page-green{
+	background-color:#e8f6e9;
+}
+
+.login-left {
+    width: 50%;
+    padding:30px 30px 30px 30px;
+}
+.log-head {
+    color: #638054;
+    font-size: 26px;
+    font-weight: bold;
+}
+.log-btn{
+    background-color: #638054;
+    color: #ffffff;
+    border-radius: 10px;
+    border: 2px #638054 solid;
+    padding: 9px 53px;
+}
+.log-btn:hover{
+    background-color: #000000;
+	border: 2px #000000 solid;
+}
+.create-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 10px;
+    border: 2px #638054 solid;
+    padding: 9px 25px;
+    margin-left: 10px;
+}
+a.create-btn:hover {
+    color: #ffffff;
+	text-decoration:none;
+	background-color: #638054;
+}
+.black-login {
+    color: #000000;
+    font-size: 15px;
+}
+.log-section {
+    width: 100%;
+    margin-top: 90px;
+}
+.login-right {
+    width: 50%;
+    background: url(../img/milltry-man.jpg);
+    border-radius: 20px 0px 0px 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 606px;
+}
+
+.signup-container {
+    margin: auto;
+    background-color: #fff;
+    border: 2px #638054 solid;
+    border-radius: 25px;
+}
+.signup-section {
+    width: 100%;
+    padding: 30px;
+}
+.app-typ {
+    color: #000000;
+    border-bottom: 1px #c5c5c5 solid;
+    padding-bottom: 7px;
+}
+.admin-txt {
+    color: #000000;
+    font-size: 13px;
+}
+.miltry-form {
+	display:flex;
+}
+.miltry-form input[type=text] {
+    margin-left: 10px;
+}
+.miltry-form2 {
+	display:flex;
+}
+.miltry-form .btn-secondary, .miltry-form2 .btn-secondary {
+    color: #000000;
+    background-color: #ffffff;
+    border-color: #858796;
+}
+.send-icon {
+    border: none;
+    margin-left: 10px;
+    background: no-repeat;
+}
+.container-chat {
+    position: relative;
+}
+.chat-section {
+    width: 65%;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+	bottom:100px;
+}
+.chat-section2 {
+    width: 35%;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 100px;
+    text-align: center;
+}
+
+.lestwide {
+    width: 125px;
+}
+
+.wide-col1 {
+    width: 10%;
+}
+.wide-col2 {
+    width: 10%;
+}
+.wide-col3 {
+    width: 10%;
+}
+.wide-col4 {
+    width: 7%;
+}
+.wide-col5 {
+    width: 10%;
+}
+.wide-col6 {
+    width: 10%;
+}
+.wide-col7 {
+    width: 10%;
+}
+
+.col-set1{
+	width: 14%;
+}
+.col-set2{
+	width: 14%;
+}
+.table-custom table tr{
+	border-bottom: 1px #bfbdbd solid;
+}
+.table-custom table td{
+    padding:10px 0px;
+}
+
+.vers-text {
+    font-size: 15px;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 40px;
+}
+.login-container {
+    margin: auto;
+    background-color: #fff;
+    border: 5px #638054 solid;
+    border-radius: 25px;
+	display:flex;
+}
+
+.inner-container2 {
+    width: 85%;
+    margin: auto;
+}
+
+
+
+@media only screen and (max-width: 1399px) {
+.login-container {max-width:800px;margin-top: 8%;}
+.inner-container {width: 90%;margin: auto;}
+.login-right {height: 504px;}
+    .signup-container {
+        width: 45%;
+        margin-top: 8%;
+    }
+}
+@media only screen and (max-width: 1024px) {
+.login-container {
+margin-top: 13%;
+max-width: 715px;
+}
+.login-right {height: 496px;}
+.log-section {margin-top: 70px;}
+.log-btn {
+    padding: 9px 31px;
+}
+.create-btn {
+    margin-left: 10px;
+}
+.signup-container {
+        width: 320px;
+        margin-top: 15%;
+		border: 2px #638054 solid;
+		border-radius: 10px;
+    }
+
+}
+@media only screen and (max-width: 767px) {
+    .login-container {
+        display: block;
+		text-align: center;
+		width: 85%;
+		border: 2px #638054 solid;
+		border-radius: 10px;
+		margin-top: 25%;
+    }
+	.login-left {
+    width: 100%;
+	padding: 15px;
+}
+    .log-btn {
+        padding: 9px 20px;
+    }
+	.create-btn {
+    padding: 9px 12px;
+}
+	.login-right {
+        height: 196px;
+        width: 100%;
+		border-radius: 10px 10px 0px 0px;
+    }
+	.log-section {
+        margin-top: 30px;
+    }
+	.log-head {
+    font-size: 22px;
+}
+.signup-container {
+        width: 95%;
+        margin-top: 15%;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+ .login-container {
+        max-width: 920px;
+        margin-top: 8%;
+    }
+.signup-container {
+    width: 420px;
+    margin-top: 8%;
+}
+}
